@@ -6,33 +6,91 @@ export default class Compass extends Ellipse {
     var {
       value = 0,
       hidden = false,
-      lineWidth = 20,
+      fillStyle,
       blankStrokeStyle,
       cx, cy, rx, ry
     } = this.model;
 
     if(!hidden){
+
+      context.translate(cx, cy)
+
+      ////  메인 원 그리기  ////
       context.beginPath()
+      context.ellipse(0, 0, Math.abs(rx), Math.abs(ry), 0, 0, 2 * Math.PI)
+      context.ellipse(0, 0, Math.abs(rx * 0.75), Math.abs(ry * 0.75), 0, 2 * Math.PI, 0, true)  // 반대로 그리며 원을 지움.
       
       this.drawStroke(context)
-
-      //// / 바깥쪽 원 그리기  ////
-      context.strokeStyle = blankStrokeStyle
-      context.ellipse(cx, cy, Math.abs(rx), Math.abs(ry), 0, 0, 2 * Math.PI)
-      
-      context.lineWidth = lineWidth
       this.drawFill(context)
-      context.stroke()
-
       context.closePath()
 
+
+      ////  무늬 그리기  ////
+      context.beginPath()
+      context.moveTo(rx * 0.65, 0)
+      context.lineTo(0, ry * 0.09)
+      context.lineTo(-rx * 0.65, 0)
+      context.lineTo(0, -ry * 0.09)
+
+      context.moveTo(0, ry * 0.65)
+      context.lineTo(rx * 0.09 , 0)
+      context.lineTo(0, -ry * 0.65)
+      context.lineTo(-rx * 0.09 , 0)
+
+      context.fillStyle = fillStyle
+      context.fill()
+      context.closePath()
+
+
+      ////  텍스트 그리기  ////
+      context.beginPath()
+      context.fillStyle = 'black'
+      context.font = (rx + ry) / 13 + "px arial"
+      context.textBaseline = "middle"
+      context.textAlign = "center"
+      context.fillText('N', 0, -ry + (ry * 0.125))
+      context.fillText('S', 0, ry - (ry * 0.125))
+      context.fillText('W', -rx + (rx * 0.125), 0)
+      context.fillText('E', rx - (rx * 0.125), 0)
+
+
+      ////  바늘 그리기  ////
+      context.beginPath()
+      var ang = (value + (this._anim_alpha || 0)) / 50 * Math.PI
+      context.rotate(ang)
+
+      context.moveTo(0, -ry * 0.65)
+      context.lineTo(rx * 0.13, 0)
+      context.lineTo(-rx * 0.13, 0)
+      context.fillStyle = '#F53B3B'
+      context.fill()
+
+      context.beginPath()
+      context.moveTo(0, ry * 0.65)
+      context.lineTo(rx * 0.13, 0)
+      context.lineTo(-rx * 0.13, 0)
+      context.fillStyle = '#3DC0E8'
+      context.fill()
+
+      context.rotate(-ang)
+
+
+      ////  중앙 원 그리기  ////
+      context.beginPath()
+      context.ellipse(0, 0, Math.abs(rx * 0.15), Math.abs(ry * 0.15), 0, 0, 2 * Math.PI)
+      context.lineWidth = (rx + ry) * 0.013
+      context.strokeStyle = '#FFFFFF'
+      context.fillStyle = '#3DC0E8'
+      context.fill()
+      context.stroke()
       context.beginPath()
 
-      ////  채워지는 원 그리기  ////
-      var percent = Math.min(Math.max(0, (value + (this._anim_alpha || 0)) / 50), 2)   // PI * 2 가 원의 한바퀴 이므로 value가 100일때 2가 되기위해 50으로 나눠줌
-      context.ellipse(cx, cy, Math.abs(rx), Math.abs(ry), 0, - Math.PI / 2, percent * Math.PI - Math.PI / 2)
+      context.ellipse(0, 0, Math.abs(rx * 0.06), Math.abs(ry * 0.06), 0, 0, 2 * Math.PI)
+      context.fillStyle = '#FFFFFF'
+      context.fill()
+      context.closePath()
 
-      this.drawStroke(context)
+      context.translate(-cx, -cy)
     }
   }
 
@@ -51,9 +109,9 @@ export default class Compass extends Ellipse {
         self.invalidate()
       },
       duration: 1000,
-      delta: 'circ',
+      delta: 'elastic',
       options: {
-        x: 1
+        x: 2
       },
       ease: 'out'
     }).start()
