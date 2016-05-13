@@ -8,6 +8,7 @@ export default class Compass extends Ellipse {
       hidden = false,
       fillStyle,
       blankStrokeStyle,
+      alpha,
       cx, cy, rx, ry
     } = this.model;
 
@@ -37,8 +38,10 @@ export default class Compass extends Ellipse {
       context.lineTo(0, -ry * 0.65)
       context.lineTo(-rx * 0.09 , 0)
 
+      context.globalAlpha = 0.8   // 무늬는 조금 흐리게 함
       context.fillStyle = fillStyle
       context.fill()
+      context.globalAlpha = alpha || 1
       context.closePath()
 
 
