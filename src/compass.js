@@ -15,7 +15,7 @@ export default class Compass extends Ellipse {
     context.beginPath()
     context.ellipse(0, 0, Math.abs(rx), Math.abs(ry), 0, 0, 2 * Math.PI)
     context.ellipse(0, 0, Math.abs(rx * 0.75), Math.abs(ry * 0.75), 0, 2 * Math.PI, 0, true)  // 반대로 그리며 원을 지움.
-    
+
     this.drawStroke(context)
     this.drawFill(context)
     context.closePath()
@@ -87,6 +87,10 @@ export default class Compass extends Ellipse {
     context.closePath()
 
     context.translate(-cx, -cy)
+  }
+
+  _post_draw(context){
+    this.drawText(context)
   }
 
   onchange(after, before) {
