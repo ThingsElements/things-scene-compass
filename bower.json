@@ -12,7 +12,7 @@
     "seed"
   ],
   "main": "things-scene-compass.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
+  "license": "http://things-scene.hatiolab.com/EULA/",
   "homepage": "https://github.com/ThingsElements/things-scene-compass/",
   "ignore": [
     "/.*",

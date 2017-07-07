@@ -1,4 +1,7 @@
-var { Component, Ellipse } = scene
+/*
+ * Copyright © HatioLab Inc. All rights reserved.
+ */
+ var { Component, Ellipse } = scene
 
 const NATURE = {
   mutable: false,
