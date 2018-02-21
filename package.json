@@ -1,8 +1,8 @@
 {
-  "name": "things-scene-compass",
-  "version": "1.0.0",
+  "name": "@things-elements/things-scene-compass",
+  "version": "2.0.2",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
-  "main": "index.js",
+  "main": "things-scene-compass-min.js",
   "directories": {
     "test": "test"
   },
