@@ -1,0 +1,67 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/hatio/Desktop/Dev/android-ndk-r10e:/Users/hatio/.rvm/bin
+
+Yarn version: 
+  1.5.0
+
+Node version: 
+  8.8.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "@things-elements/things-scene-compass",
+    "version": "2.0.3",
+    "description": "An element providing a starting point for your own reusable Polymer elements.",
+    "main": "src/index.js",
+    "things-shell": true,
+    "directories": {
+      "test": "test"
+    },
+    "scripts": {
+      "serve": "watchify src/*.js -o things-scene-compass.js src/index.js & polyserve",
+      "build": "browserify src/index.js -o things-scene-compass.js && uglifyjs things-scene-compass.js -o things-scene-compass-min.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ThingsElements/things-scene-compass.git"
+    },
+    "author": "",
+    "license": "http://things-scene.hatiolab.com/EULA/",
+    "bugs": {
+      "url": "https://github.com/ThingsElements/things-scene-compass/issues"
+    },
+    "homepage": "https://github.com/ThingsElements/things-scene-compass#readme",
+    "browserify": {
+      "transform": [
+        "babelify"
+      ]
+    },
+    "devDependencies": {
+      "@hatiolab/things-shell": "^0.2.26"
+    },
+    "dependencies": {
+      "@hatiolab/things-scene": "^2.2.36"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: The package undefined@undefined requires a flat dependency graph. Add `"flat": true` to your package.json and try again.
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at PackageRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:36437:15)
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:188:7)
