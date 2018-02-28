@@ -9,5 +9,5 @@ node_modules
 .git
 boards
 bower_components
-things-scene-clock.js
-things-scene-clock-min.js
+things-scene-compass.js
+things-scene-compass-min.js
