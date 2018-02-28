@@ -1,5 +1,6 @@
 DEPLOYMENT.md
 DEVELOPMENT.md
+src/
 dist/
 npm-debug.log
 node_modules
@@ -7,7 +8,3 @@ node_modules
 .editorconfig
 .gitignore
 .git
-bower_components
-things-scene-compass.js
-things-scene-compass-min.js
-boards

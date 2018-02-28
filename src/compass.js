@@ -1,8 +1,7 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
-
-import { Component, Ellipse } from '@hatiolab/things-scene' 
+ var { Component, Ellipse } = scene
 
 const NATURE = {
   mutable: false,
