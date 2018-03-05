@@ -1,6 +1,6 @@
 import locales from './locales';
 
-import icon from '../assets/compass.png';
+import icon from './assets/compass.png';
 
 var templates = [{
   type: 'compass',
