@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/compass",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "Compass Component for things-scene.",
   "main": "src/index.js",
   "module": "dist/things-scene-compass.mjs",
